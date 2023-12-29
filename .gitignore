@@ -1,0 +1,41 @@
+# Ignore session files
+*.viminfo
+*.swp
+*.swo
+*.swpx
+*.session
+*.netrwhist
+
+# Ignore files related to local plugins management
+/plugged/
+/dein/
+/coc/
+/node_modules/
+
+# Ignore tag navigation files
+tags
+!tags-custom
+
+# Ignore system-specific viminfo
+.viminfo*
+
+# Ignore history, undo, and backup files
+.history/
+.undodir/
+backup/
+undo/
+
+# Ignore compiled files
+*.pyc
+__pycache__/
+
+# Ignore lazy-loader specific files
+lazy-lock.json
+
+# Optionally, ignore the init.lua if you want to keep it local and not version-controlled
+# init.lua
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
