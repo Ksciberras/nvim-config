@@ -26,6 +26,19 @@ end)
 local lspconfig = require("lspconfig")
 lspconfig.lua_ls.setup({})
 lspconfig.tsserver.setup({})
+lspconfig.gopls.setup({
+  cmd = { "gopls" },
+  filetypes = { "go", "gomod", "gowork", "gotmpl" },
+  settings = {
+    gopls = {
+      completeUnimported = true,
+      usePlaceholders = true,
+      analyses = {
+        unusedparams = true,
+      },
+    },
+  },
+})
 
 lsp_zero.format_on_save({
   format_opts = {
