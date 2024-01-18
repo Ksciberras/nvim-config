@@ -8,6 +8,7 @@ vim.wo.relativenumber = true
 vim.wo.numberwidth = 5
 vim.cmd([[hi Normal guibg=NONE]])
 
+vim.opt.swapfile = false
 vim.opt.clipboard:append("unnamedplus")
 
 vim.api.nvim_set_keymap("n", "<leader>ir", ":set invrelativenumber<CR>", { noremap = true, silent = true })

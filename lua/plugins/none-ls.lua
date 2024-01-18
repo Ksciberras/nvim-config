@@ -16,10 +16,15 @@ return {
           })
         end
       end,
-      sources = {
-        null_ls.builtins.formatting.prettier,
+      sources = { null_ls.builtins.formatting.prettier.with({
+        filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+      }),
+
         null_ls.builtins.diagnostics.eslint_d,
-        null_ls.builtins.formatting.eslint_d,
+        null_ls.builtins.formatting.eslint_d.with({
+          filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+
+        }),
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.gofumpt,
         null_ls.builtins.formatting.goimports_reviser,
