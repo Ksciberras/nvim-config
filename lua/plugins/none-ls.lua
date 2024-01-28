@@ -16,19 +16,20 @@ return {
           })
         end
       end,
-      sources = { null_ls.builtins.formatting.prettier.with({
-        filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
-      }),
+      sources = {
+        null_ls.builtins.formatting.prettier.with({
+          filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+        }),
 
         null_ls.builtins.diagnostics.eslint_d,
         null_ls.builtins.formatting.eslint_d.with({
           filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
-
         }),
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.gofumpt,
         null_ls.builtins.formatting.goimports_reviser,
         null_ls.builtins.formatting.csharpier,
+        null_ls.builtins.formatting.clang_format,
       },
     })
     vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format, {})

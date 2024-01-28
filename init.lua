@@ -76,7 +76,6 @@ lspconfig.gopls.setup({
   },
 })
 
-
 lspconfig.volar.setup({
   on_init = function(client)
     client.server_capabilities.documentFormattingProvider = false
@@ -87,8 +86,10 @@ lspconfig.volar.setup({
     vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", { buffer = bufnr })
     vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent = true })
     vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
-  end
+  end,
 })
+
+lspconfig.clangd.setup({})
 
 lsp_zero.format_on_save({
   format_opts = {
