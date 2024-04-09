@@ -30,6 +30,8 @@ return {
         null_ls.builtins.formatting.goimports_reviser,
         null_ls.builtins.formatting.csharpier,
         null_ls.builtins.formatting.clang_format,
+        null_ls.builtins.formatting.black,
+        null_ls.builtins.diagnostics.ruff,
       },
     })
     vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format, {})

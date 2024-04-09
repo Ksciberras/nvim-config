@@ -62,6 +62,9 @@ vim.api.nvim_create_autocmd("FileType", {
     )
   end,
 })
+
+lspconfig.pyright.setup({})
+
 lspconfig.gopls.setup({
   cmd = { "gopls" },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
