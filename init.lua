@@ -26,6 +26,8 @@ vim.api.nvim_create_autocmd("FileType", {
 
 local lsp_zero = require("lsp-zero")
 
+local navic = require("nvim-navic")
+
 lsp_zero.on_attach(function(client, bufnr)
   lsp_zero.default_keymaps({ buffer = bufnr })
   vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", { buffer = bufnr })
@@ -38,7 +40,11 @@ local lspconfig = require("lspconfig")
 
 lspconfig.lua_ls.setup({})
 
-lspconfig.tsserver.setup({})
+lspconfig.tsserver.setup({
+  on_attach = function(client, bufnr)
+    navic.attach(client, bufnr)
+  end,
+})
 
 lspconfig.omnisharp.setup({
 
@@ -78,6 +84,9 @@ lspconfig.gopls.setup({
       },
     },
   },
+  on_attach = function(client, bufnr)
+    navic.attach(client, bufnr)
+  end,
 })
 
 lspconfig.volar.setup({
