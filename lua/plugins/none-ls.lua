@@ -18,7 +18,7 @@ return {
       end,
       sources = {
         null_ls.builtins.formatting.prettier.with({
-          filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+          filetypes = { "html", "css", "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
         }),
 
         null_ls.builtins.diagnostics.eslint_d,
