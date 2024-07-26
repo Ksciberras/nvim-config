@@ -40,6 +40,8 @@ local lspconfig = require("lspconfig")
 
 lspconfig.lua_ls.setup({})
 
+lspconfig.templ.setup({})
+
 lspconfig.tsserver.setup({
   on_attach = function(client, bufnr)
     navic.attach(client, bufnr)
@@ -55,6 +57,8 @@ lspconfig.omnisharp.setup({
     tostring(vim.fn.getpid()),
   },
 })
+
+lspconfig.jdtls.setup({})
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "cs",
@@ -104,6 +108,42 @@ lspconfig.volar.setup({
 
 lspconfig.clangd.setup({})
 
+lspconfig.rust_analyzer.setup({
+  on_attach = function(client, bufnr)
+    navic.attach(client, bufnr)
+  end,
+  settings = {
+    ["rust-analyzer"] = {
+      cargo = {
+        allFeatures = true,
+        loadOutDirsFromCheck = true,
+        runBuildScripts = true,
+      },
+      -- Add clippy lints for Rust.
+      checkOnSave = {
+        allFeatures = true,
+        command = "clippy",
+        extraArgs = {
+          "--",
+          "--no-deps",
+          "-Dclippy::correctness",
+          "-Dclippy::complexity",
+          "-Wclippy::perf",
+          "-Wclippy::pedantic",
+        },
+      },
+      procMacro = {
+        enable = true,
+        ignored = {
+          ["async-trait"] = { "async_trait" },
+          ["napi-derive"] = { "napi" },
+          ["async-recursion"] = { "async_recursion" },
+        },
+      },
+    },
+  },
+})
+
 lsp_zero.format_on_save({
   format_opts = {
     async = false,
@@ -113,5 +153,6 @@ lsp_zero.format_on_save({
     ["lua_ls"] = { "lua" },
     ["tsserver"] = { "javascript", "typescript" },
     ["volar"] = false,
+    ["templ"] = { "templ" },
   },
 })

@@ -18,7 +18,15 @@ return {
       end,
       sources = {
         null_ls.builtins.formatting.prettier.with({
-          filetypes = { "html", "css", "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+          filetypes = {
+            "html",
+            "css",
+            "vue",
+            "javascript",
+            "typescript",
+            "javascriptreact",
+            "typescriptreact",
+          },
         }),
 
         null_ls.builtins.diagnostics.eslint_d,
@@ -32,6 +40,8 @@ return {
         null_ls.builtins.formatting.clang_format,
         null_ls.builtins.formatting.black,
         null_ls.builtins.diagnostics.ruff,
+        null_ls.builtins.formatting.rustfmt,
+        null_ls.builtins.formatting.google_java_format,
       },
     })
     vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format, {})
